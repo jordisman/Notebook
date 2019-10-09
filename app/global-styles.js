@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     width: 100%;
+    background-color: white;
   }
 
   body {
@@ -16,14 +17,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #app {
-    background-color: #fafafa;
-    min-height: 100%;
-    min-width: 100%;
+    background-color: AliceBlue;
+    min-height: 90%;
+    min-width: 90%;
+    margin: 3rem;
+    padding: 3rem;
+    box-shadow: 5px 5px 10px #808080;
   }
 
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font - family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.5em;
   }
 `;

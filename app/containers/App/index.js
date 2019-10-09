@@ -8,21 +8,32 @@
  */
 
 import React from 'react';
+import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
+const AppWrapper = styled.div `
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 30px 16px;
+  background-color: white;
+`;
+
 export default function App() {
   return (
-    <div>
+    <AppWrapper>
+    here is App - index
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        <Route path="" component={NotFoundPage} />
+        <Route path="/main" component={MainPage} />
       </Switch>
       <GlobalStyle />
-    </div>
+    </AppWrapper>
   );
 }

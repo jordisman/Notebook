@@ -11,7 +11,7 @@ export const scope = 'app.containers.HomePage';
 export default defineMessages({
   header: {
       id: `${scope}.header`,
-      defaultMessage: `${moment().format("MMMM Do YYYY, h:mm a")}`,
+      defaultMessage: `${moment().format("dddd, MMMM Do YYYY, h:mm a")}`,
     },
   p: {
     id: `${scope}.p`,
