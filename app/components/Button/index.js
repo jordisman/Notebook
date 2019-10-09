@@ -17,7 +17,7 @@ function Button(props) {
   // Render an anchor tag
   let button = (
     <A href={props.href} onClick={props.onClick}>
-      Notes
+      Add note
       {Children.toArray(props.children)}
     </A>
   );
@@ -38,7 +38,7 @@ Button.propTypes = {
   handleRoute: PropTypes.func,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
+  // children: PropTypes.node.isRequired,
 };
 
 export default Button;

@@ -10,7 +10,11 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import AddNote from '../../components/AddNote/AddNote';
+import Note from '../../components/Note/Note'
 import Button from '../../components/Button';
+// import Notes from '../AddNotePage/index';
+
+import { connect } from 'react-redux';
 
 export default function HomePage() {
   return (
@@ -22,6 +26,7 @@ export default function HomePage() {
         <FormattedMessage {...messages.p} />
       </p>
       <AddNote />
+      <Note />
       <Button />
     </div>
   );

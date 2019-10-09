@@ -38,6 +38,12 @@ app.get('*.js', (req, res, next) => {
   next();
 });
 
+
+app.get('/', (req, res) => {
+  console.log('Hello from server');
+  res.send('Hello from server');
+});
+
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {
