@@ -17,6 +17,7 @@ function Button(props) {
   // Render an anchor tag
   let button = (
     <A href={props.href} onClick={props.onClick}>
+      Notes
       {Children.toArray(props.children)}
     </A>
   );

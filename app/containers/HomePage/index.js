@@ -9,6 +9,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import AddNote from '../../components/AddNote/AddNote';
+import Button from '../../components/Button';
+
 export default function HomePage() {
   return (
     <div>
@@ -18,6 +21,8 @@ export default function HomePage() {
       <p>
         <FormattedMessage {...messages.p} />
       </p>
+      <AddNote />
+      <Button />
     </div>
   );
 }

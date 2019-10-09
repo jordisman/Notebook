@@ -16,6 +16,8 @@ const buttonStyles = css`
   font-size: 16px;
   border: 2px solid #41addd;
   color: #41addd;
+  background-color: AliceBlue;
+  height: 30px;
 
   &:active {
     background: #41addd;
