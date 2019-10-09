@@ -1,5 +1,4 @@
 import React from 'react';
-import { notStrictEqual } from 'assert';
 
 const Note = (props) => {
   return (
