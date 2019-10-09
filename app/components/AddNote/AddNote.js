@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class AddNote extends React.Component {
   state = {
     note: ''
