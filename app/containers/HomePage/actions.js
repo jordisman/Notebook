@@ -1,1 +1,8 @@
-export const ADD_NOTE = 'ADD_NOTE';
+import {ADD_NOTE} from './constants';
+
+export function addNote(note) {
+  return {
+    type: ADD_NOTE,
+    note
+  };
+}

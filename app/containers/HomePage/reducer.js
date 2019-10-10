@@ -1,21 +1,18 @@
-import {ADD_NOTE} from './actions';
+import {ADD_NOTE} from './constants';
+import produce from 'immer';
 
 const initialState = {
-  notes: []
+  note: '',
+  notes: ['Example note 1']
 }
 
-const homeReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_NOTE:
-      const newNote = {
-        note: action.noteData.note
-      }
-      return {
-        ...state,
-        notes: state.notes.concat(newNote)
-      }
-  }
-  return state;
-};
+const homeReducer = (state = initialState, action) =>
+  produce(state, draft => {
+    switch (action.type) {
+      case ADD_NOTE:
+        draft.note = action.note;
+        break;
+    }
+  });
 
 export default homeReducer;

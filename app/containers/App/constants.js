@@ -1,0 +1,1 @@
+export const ALL_NOTES = 'Notebook/App/ALL_NOTES';

@@ -6,26 +6,36 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+import {
+  makeSelectNote,
+  makeSelectLoading,
+  makeSelectError,
+} from 'containers/App/selectors';
 
 import Form from './Form';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
+import {addNote} from './actions';
 
 import AddNote from '../../components/AddNote/AddNote';
+// import NotesList from '../../components/NotesList/NotesList';
 import Note from '../../components/Note/Note'
 import Button from '../../components/Button';
 
+// import reducer from './reducer';
+// import saga from './saga';
 
+// const key = 'home';
 
 export function HomePage({
   note,
@@ -34,6 +44,7 @@ export function HomePage({
   onSubmitForm,
   onChange,
 }) {
+
   return (
     <div>
       <h1>
@@ -43,32 +54,20 @@ export function HomePage({
         <FormattedMessage {...messages.p} />
       </p>
       <Section>
-      <Form onSubmit={onSubmitForm}>
-        <Input
-          id="note"
-          type="text"
-          placeholder="Add Note"
-          value={note}
-          onChange={onChange}
-        />
-        </Form>
+          <Form onSubmit={onSubmitForm}>
+            <Input
+              id="note"
+              type="text"
+              placeholder="Add Note"
+              value={note}
+              onChange={onChange}
+            />
+          </Form>
+
       </Section>
       <Button />
     </div>
   );
-}
-
-class Notes extends React.Component {
-  render() {
-    return (
-      <div>
-        <AddNote noteAdded={this.props.onAddedNote} />
-        {this.props.notes.map(note => (
-          <Note note={note.note} />
-        ))}
-      </div>
-    );
-  }
 }
 
 
@@ -80,22 +79,31 @@ HomePage.propTypes = {
   onChange: PropTypes.func
 };
 
-const mapStateToProps = state => {
-  return {
-    notes: state.notes
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     notes: state.notes
+//   };
+// };
+
+const mapStateToProps = createStructuredSelector({
+  note: makeSelectNote(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddedNote: (note) => dispatch({
-      type: actionTypes.ADD_NOTE,
-      noteData: {
-        note: note
-      }
-    })
+    onChange: e => dispatch(addNote(e.target.value)),
+    onSubmitForm: evt => {
+      if (e !== undefined && e.preventDefault) e.preventDefault();
+      dispatch(loadRepos());
+    },
   };
 };
 
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage, Notes);
+export default compose(withConnect)(HomePage);
